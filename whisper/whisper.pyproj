@@ -1,0 +1,149 @@
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>04498ae1-87d5-452b-a839-205513225268</ProjectGuid>
+    <ProjectHome>.</ProjectHome>
+    <StartupFile>
+    </StartupFile>
+    <SearchPath>
+    </SearchPath>
+    <WorkingDirectory>.</WorkingDirectory>
+    <OutputPath>.</OutputPath>
+    <Name>whisper</Name>
+    <RootNamespace>whisper</RootNamespace>
+    <InterpreterId>MSBuild|env|$(MSBuildProjectFullPath)</InterpreterId>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <DebugSymbols>true</DebugSymbols>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <DebugSymbols>true</DebugSymbols>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="utils\convert_mp3.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="whisper_ai.py" />
+    <Compile Include="finetuning\fine tuning.py">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Interpreter Include="env\">
+      <Id>env</Id>
+      <Version>3.10</Version>
+      <Description>env (Python 3.10 (64-bit))</Description>
+      <InterpreterPath>Scripts\python.exe</InterpreterPath>
+      <WindowsInterpreterPath>Scripts\pythonw.exe</WindowsInterpreterPath>
+      <PathEnvironmentVariable>PYTHONPATH</PathEnvironmentVariable>
+      <Architecture>X64</Architecture>
+    </Interpreter>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="finetuning\" />
+    <Folder Include="utils\" />
+    <Folder Include="whisper-small-ko-zeroth\" />
+    <Folder Include="whisper-small-ko-zeroth\runs\" />
+    <Folder Include="whisper-small-ko-zeroth\runs\Dec11_09-47-49_5b38513151a9\" />
+    <Folder Include="whisper-small-ko-zeroth\runs\Dec11_09-47-49_5b38513151a9\1670719818.726506\" />
+    <Folder Include="whisper-small-ko-zeroth\runs\Dec11_11-52-20_5b38513151a9\" />
+    <Folder Include="whisper-small-ko-zeroth\runs\Dec11_11-52-20_5b38513151a9\1670727423.3405182\" />
+    <Folder Include="whisper-small-kr\" />
+    <Folder Include="whisper-small-kr\checkpoint-1000\" />
+    <Folder Include="whisper-small-kr\checkpoint-2000\" />
+    <Folder Include="whisper-small-kr\checkpoint-3000\" />
+    <Folder Include="whisper-small-kr\checkpoint-4000\" />
+    <Folder Include="whisper-small-kr\runs\" />
+    <Folder Include="whisper-small-kr\runs\Mar19_16-55-01_Deskop_for_AI\" />
+    <Folder Include="whisper-small-kr\runs\Mar19_16-55-01_Deskop_for_AI\1679212680.8713632\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="audio2.m4a" />
+    <Content Include="whisper-small-ko-zeroth\.gitattributes" />
+    <Content Include="whisper-small-ko-zeroth\.gitignore" />
+    <Content Include="whisper-small-ko-zeroth\added_tokens.json" />
+    <Content Include="whisper-small-ko-zeroth\config.json" />
+    <Content Include="whisper-small-ko-zeroth\merges.txt" />
+    <Content Include="whisper-small-ko-zeroth\normalizer.json" />
+    <Content Include="whisper-small-ko-zeroth\preprocessor_config.json" />
+    <Content Include="whisper-small-ko-zeroth\pytorch_model.bin" />
+    <Content Include="whisper-small-ko-zeroth\README.md" />
+    <Content Include="whisper-small-ko-zeroth\runs\Dec11_09-47-49_5b38513151a9\1670719818.726506\events.out.tfevents.1670719818.5b38513151a9.32398.1" />
+    <Content Include="whisper-small-ko-zeroth\runs\Dec11_09-47-49_5b38513151a9\events.out.tfevents.1670719818.5b38513151a9.32398.0" />
+    <Content Include="whisper-small-ko-zeroth\runs\Dec11_11-52-20_5b38513151a9\1670727423.3405182\events.out.tfevents.1670727423.5b38513151a9.32398.3" />
+    <Content Include="whisper-small-ko-zeroth\runs\Dec11_11-52-20_5b38513151a9\events.out.tfevents.1670727423.5b38513151a9.32398.2" />
+    <Content Include="whisper-small-ko-zeroth\special_tokens_map.json" />
+    <Content Include="whisper-small-ko-zeroth\tokenizer_config.json" />
+    <Content Include="whisper-small-ko-zeroth\training_args.bin" />
+    <Content Include="whisper-small-ko-zeroth\vocab.json" />
+    <Content Include="whisper-small-kr\.gitattributes" />
+    <Content Include="whisper-small-kr\.gitignore" />
+    <Content Include="whisper-small-kr\added_tokens.json" />
+    <Content Include="whisper-small-kr\checkpoint-1000\config.json" />
+    <Content Include="whisper-small-kr\checkpoint-1000\generation_config.json" />
+    <Content Include="whisper-small-kr\checkpoint-1000\optimizer.pt" />
+    <Content Include="whisper-small-kr\checkpoint-1000\preprocessor_config.json" />
+    <Content Include="whisper-small-kr\checkpoint-1000\pytorch_model.bin" />
+    <Content Include="whisper-small-kr\checkpoint-1000\rng_state.pth" />
+    <Content Include="whisper-small-kr\checkpoint-1000\scaler.pt" />
+    <Content Include="whisper-small-kr\checkpoint-1000\scheduler.pt" />
+    <Content Include="whisper-small-kr\checkpoint-1000\trainer_state.json" />
+    <Content Include="whisper-small-kr\checkpoint-1000\training_args.bin" />
+    <Content Include="whisper-small-kr\checkpoint-2000\config.json" />
+    <Content Include="whisper-small-kr\checkpoint-2000\generation_config.json" />
+    <Content Include="whisper-small-kr\checkpoint-2000\optimizer.pt" />
+    <Content Include="whisper-small-kr\checkpoint-2000\preprocessor_config.json" />
+    <Content Include="whisper-small-kr\checkpoint-2000\pytorch_model.bin" />
+    <Content Include="whisper-small-kr\checkpoint-2000\rng_state.pth" />
+    <Content Include="whisper-small-kr\checkpoint-2000\scaler.pt" />
+    <Content Include="whisper-small-kr\checkpoint-2000\scheduler.pt" />
+    <Content Include="whisper-small-kr\checkpoint-2000\trainer_state.json" />
+    <Content Include="whisper-small-kr\checkpoint-2000\training_args.bin" />
+    <Content Include="whisper-small-kr\checkpoint-3000\config.json" />
+    <Content Include="whisper-small-kr\checkpoint-3000\generation_config.json" />
+    <Content Include="whisper-small-kr\checkpoint-3000\optimizer.pt" />
+    <Content Include="whisper-small-kr\checkpoint-3000\preprocessor_config.json" />
+    <Content Include="whisper-small-kr\checkpoint-3000\pytorch_model.bin" />
+    <Content Include="whisper-small-kr\checkpoint-3000\rng_state.pth" />
+    <Content Include="whisper-small-kr\checkpoint-3000\scaler.pt" />
+    <Content Include="whisper-small-kr\checkpoint-3000\scheduler.pt" />
+    <Content Include="whisper-small-kr\checkpoint-3000\trainer_state.json" />
+    <Content Include="whisper-small-kr\checkpoint-3000\training_args.bin" />
+    <Content Include="whisper-small-kr\checkpoint-4000\config.json" />
+    <Content Include="whisper-small-kr\checkpoint-4000\generation_config.json" />
+    <Content Include="whisper-small-kr\checkpoint-4000\optimizer.pt" />
+    <Content Include="whisper-small-kr\checkpoint-4000\preprocessor_config.json" />
+    <Content Include="whisper-small-kr\checkpoint-4000\pytorch_model.bin" />
+    <Content Include="whisper-small-kr\checkpoint-4000\rng_state.pth" />
+    <Content Include="whisper-small-kr\checkpoint-4000\scaler.pt" />
+    <Content Include="whisper-small-kr\checkpoint-4000\scheduler.pt" />
+    <Content Include="whisper-small-kr\checkpoint-4000\trainer_state.json" />
+    <Content Include="whisper-small-kr\checkpoint-4000\training_args.bin" />
+    <Content Include="whisper-small-kr\config.json" />
+    <Content Include="whisper-small-kr\merges.txt" />
+    <Content Include="whisper-small-kr\normalizer.json" />
+    <Content Include="whisper-small-kr\preprocessor_config.json" />
+    <Content Include="whisper-small-kr\pytorch_model.bin" />
+    <Content Include="whisper-small-kr\README.md" />
+    <Content Include="whisper-small-kr\runs\Mar19_16-55-01_Deskop_for_AI\1679212680.8713632\events.out.tfevents.1679212680.Deskop_for_AI.34604.1" />
+    <Content Include="whisper-small-kr\runs\Mar19_16-55-01_Deskop_for_AI\events.out.tfevents.1679212680.Deskop_for_AI.34604.0" />
+    <Content Include="whisper-small-kr\special_tokens_map.json" />
+    <Content Include="whisper-small-kr\tokenizer_config.json" />
+    <Content Include="whisper-small-kr\training_args.bin" />
+    <Content Include="whisper-small-kr\vocab.json" />
+    <Content Include="whisper_fine_tuning.ipynb" />
+    <Content Include="whisper_fine_tuning2.ipynb" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
+  <!-- Uncomment the CoreCompile target to enable the Build command in
+       Visual Studio and specify your pre- and post-build commands in
+       the BeforeBuild and AfterBuild targets below. -->
+  <!--<Target Name="CoreCompile" />-->
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+</Project>
