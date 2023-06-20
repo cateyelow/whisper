@@ -1,0 +1,14 @@
+
+*.0
+*.1
+*.json
+*.pt
+*.pth
+*.bin
+*.2
+*.arrow
+*.log
+*.yaml
+*.wandb
+*.txt
+*.3
