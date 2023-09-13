@@ -1,6 +1,6 @@
 import os
 import pathlib
-from concurrent.futures import as_completed, ThreadPoolExecutor
+from concurrent.futures import as_completed, ThreadPoolExecutor, ProcessPoolExecutor
 from multiprocessing import cpu_count, Pool
 from zipfile import ZipFile
 
@@ -37,59 +37,46 @@ def extract_zipfile(filename):
     return wavfiles
 
 
-
-
 def get_mp3_path(wavfile):
     mp3dir = list(wavfile.parents)[1] / "mp3"
     mp3dir.mkdir(parents=True, exist_ok=True)
     mp3file = mp3dir / wavfile.with_suffix(".mp3").name
     return mp3file
 
+def convert_wav_to_mp3(wavfile, output_directory):
+    mp3file = Path(output_directory, wavfile.stem + ".mp3")
+    #print(mp3file)
 
-
-
-def convert_wav_to_mp3(wavfile, output):
-    mp3file = Path(output + wavfile.stem + ".mp3")
-    print(mp3file)
-    #Check mp3 file already exists
     if mp3file.exists():
-        print(mp3file.stem + " already exists")
+        #print(mp3file.stem + " already exists")
         return mp3file
+
     try:
         wavaudio = AudioSegment.from_wav(wavfile)
         wavaudio = wavaudio.set_frame_rate(16000).set_channels(1)
         wavaudio = effects.normalize(wavaudio)
         wavaudio.export(mp3file, format="mp3", bitrate="16k")
-        print(mp3file.stem + " converted to mp3")
+        #print(mp3file.stem + " converted to mp3")
         return mp3file
     except Exception as e:
-        print(f"Unable to convert {wavfile} to mp3")
-        print(e)
-
-
-
-
+        #print(f"Unable to convert {wavfile} to mp3")
+        #print(e)
+        pass
 
 def main():
-    directory = 'E:/Datasets_Speech/Korean/014.다화자 음성합성 데이터/01.데이터/1.Training/원천데이터/'
-    output_directory = 'E:/Datasets_Speech/Korean/014.다화자 음성합성 데이터/01.데이터/1.Training/원천데이터/converted/'
-    # Recursively search for all WAV files within the directory
-    wav_files = []
-    for root, dirs, files in os.walk(directory):
-        for file in files:
-            print(file)
-            if file.endswith('.wav'):
-                wav_files.append(Path(root + '/' + file))
-                print(Path(root + '/' + file))
-    # convert wav to mp3 in wav_files
-    with ThreadPoolExecutor(max_workers=cpu_count()) as executor:
-        futures = [executor.submit(convert_wav_to_mp3, Path(wavfile), output_directory) for wavfile in wav_files]
-        for future in tqdm(as_completed(futures), total=len(futures)):
+    directory = 'D:/Datasets_Speech/Korean/014.다화자 음성합성 데이터/01.데이터/2.Validation/원천데이터/'
+    output_directory = 'D:/Datasets_Speech/Korean/014.다화자 음성합성 데이터/01.데이터/2.Validation/원천데이터/converted/'
+    output_directory = Path(output_directory)
+    output_directory.mkdir(parents=True, exist_ok=True)
+
+    # Efficiently find all .wav files
+    wav_files = list(Path(directory).rglob("*.wav"))
+
+    # Convert wav to mp3 using multiprocessing for better CPU utilization
+    with ProcessPoolExecutor(max_workers=os.cpu_count()) as executor:
+        futures = [executor.submit(convert_wav_to_mp3, wavfile, output_directory) for wavfile in wav_files]
+        for _ in tqdm(as_completed(futures), total=len(futures)):
             pass
     
-    
-
-
-
 if __name__ == "__main__":
     main()
